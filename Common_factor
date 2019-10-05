@@ -1,0 +1,29 @@
+Dim a, b, c, d, f, g, h, i, j, k, l, m, n, o, s As Integer
+        a = Val(TextBox1.Text)
+        b = Val(TextBox2.Text)
+        c = Val(TextBox3.Text)
+        d = a
+        f = b
+        g = c
+        While b <> 0
+            h = a Mod b
+            a = b
+            b = h
+        End While
+        j = a
+        i = (d * f) / a
+        l = i
+        While c <> 0
+            k = l Mod c
+            l = c
+            c = k
+        End While
+        m = l
+        While m <> 0
+            n = j Mod m
+            j = m
+            m = n
+        End While
+        Label1.Text = j
+        o = (d * g * f) / (l * a)
+        Label2.Text = o
