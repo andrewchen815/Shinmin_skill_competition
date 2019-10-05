@@ -1,0 +1,38 @@
+Public Class Form1
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Dim c, i, k, j, a(4), temp As Integer
+        Label1.Text = ""
+        Label2.Text = ""
+        Do
+            c = 0
+            For i = 0 To 4
+                a(i) = Int(Rnd() * 101) + 0
+            Next
+            For k = 0 To 3
+                For j = k + 1 To 4
+                    If a(k) = a(j) Then
+                        c = c + 1
+                    End If
+                Next
+            Next
+        Loop While c >= 1
+        For i = 0 To 4
+            Label1.Text = Label1.Text & a(i) & ","
+        Next
+
+        For x = 1 To 4
+            For y = 0 To (4 - x)
+                If a(y) > a(y + 1) Then
+                    temp = a(y)
+                    a(y) = a(y + 1)
+                    a(y + 1) = temp
+                End If
+            Next
+        Next
+        For i = 0 To 4
+            Label2.Text = Label2.Text & a(i) & ","
+        Next
+       Label3.Text = a(2)
+    End Sub
+End Class
