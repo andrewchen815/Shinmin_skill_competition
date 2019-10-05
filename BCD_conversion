@@ -1,0 +1,76 @@
+Public Class Form1
+    Function D2BCD(ByVal dec) As String
+        Select Case dec
+            Case 0
+                D2BCD = "0000"
+            Case 1
+                D2BCD = "0001"
+            Case 2
+                D2BCD = "0010"
+            Case 3
+                D2BCD = "0011"
+            Case 4
+                D2BCD = "0100"
+            Case 5
+                D2BCD = "0101"
+            Case 6
+                D2BCD = "0110"
+            Case 7
+                D2BCD = "0111"
+            Case 8
+                D2BCD = "1000"
+            Case 9
+                D2BCD = "1001"
+        End Select
+    End Function
+    Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
+        'Function D2BCD(ByVal dec) As String
+
+        Dim bcd00, bcd01, bcd10, bcd11, bcd20, bcd21, bcd22 As String
+        Dim x0, x1, y0, y1, a0, a1, a2 As Integer
+
+        Randomize()
+
+        x1 = CInt(Rnd() * 9)
+        x0 = CInt(Rnd() * 9)
+        y1 = CInt(Rnd() * 9)
+        y0 = CInt(Rnd() * 9)
+
+        bcd00 = D2BCD(x0)
+        bcd01 = D2BCD(x1)
+        bcd10 = D2BCD(y0)
+        bcd11 = D2BCD(y1)
+
+        a0 = x0 + y0
+
+        If (a0 >= 10) Then
+            a0 = a0 - 10
+            a1 = 1 + x1 + y1
+        Else
+            a1 = x1 + y1
+        End If
+        If (a1 >= 10) Then
+            a1 = a1 - 10
+            a2 = 1
+        Else
+            a2 = 0
+        End If
+
+        bcd20 = D2BCD(a0)
+        bcd21 = D2BCD(a1)
+        bcd22 = ""
+
+
+        If (a2 = 0) Then
+            bcd22 = ""
+            bcd22 = D2BCD(a2)
+        End If
+
+        BCD0.Text = bcd01 & bcd00
+        DEC0.Text = x1 & x0
+        BCD1.Text = bcd11 & bcd10
+        DEC1.Text = y1 & y0
+        BCD2.Text = bcd22 & bcd21 & bcd20
+        DEC2.Text = a2 & a1 & a0
+    End Sub
+End Class
